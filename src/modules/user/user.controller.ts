@@ -1,18 +1,21 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import { UserService, User } from './user.service';
+import { UserService } from './user.service';
+import { User } from './user.entity';
 
 @Controller('user')
 export class UserController {
-  constructor(private userServer: UserService) {}
+  constructor(private userService: UserService) {}
 
   @Get()
-  getUsers() {
-    return this.userServer.getUsers();
+  async getUsers() {
+    return await this.userService.getUsers();
   }
 
   @Post()
-  addUser(@Body() payload: User): User[] {
-    const users = this.userServer.addUser(payload);
-    return users;
+  async addUser(@Body() payload: User): Promise<any[]> {
+    const users = await this.userService.addUser(payload);
+    // await this.userService.addUser(payload);
+    console.log(users);
+    return;
   }
 }

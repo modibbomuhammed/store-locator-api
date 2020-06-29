@@ -1,25 +1,31 @@
 import { Injectable } from '@nestjs/common';
+import { UserRepository } from './user.repository';
+import { User } from './user.entity';
 
-export class User {
-  username: string;
-  password: string;
-}
+// export class User {
+//   username: string;
+//   password: string;
+// }
 
 @Injectable()
 export class UserService {
-  private users: User[] = [
-    {
-      username: 'user1',
-      password: 'password',
-    },
-  ];
+  // private users: User[] = [
+  //   {
+  //     username: 'user1',
+  //     password: 'password',
+  //   },
+  // ];
+  constructor(private usersRepo: UserRepository) {}
 
-  getUsers(): User[] {
-    return this.users;
+  async getUsers(): Promise<User[]> {
+    return await this.usersRepo.find();
   }
 
-  addUser(user: User) {
-    this.users.push(user);
-    return this.users;
+  async addUser(user: User) {
+    // this.users.push(user);
+    // return this.users;
+    const newUser = await this.usersRepo.create(user);
+    console.log(newUser, 'from userServe');
+    return newUser;
   }
 }
