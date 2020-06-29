@@ -3,7 +3,7 @@
   "host": "localhost",
   "port": 5432,
   "username": "postgres",
-  "password": "00ASHSecret*",
+  "password": "password",
   "database": "postgres",
   "entities": ["dist/**/*.entity{.ts,.js}"],
   "synchronize": true
