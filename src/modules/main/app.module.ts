@@ -3,7 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from '../user';
-import { User } from '../user/user.entity';
+import { ormConfig } from '../../../ormconfig';
+// import { User } from '../user/user.entity';
 
 // @Module({
 //   imports: [
@@ -25,7 +26,7 @@ import { User } from '../user/user.entity';
 // export class AppModule {}
 
 @Module({
-  imports: [UserModule, TypeOrmModule.forRoot()],
+  imports: [UserModule, TypeOrmModule.forRoot(ormConfig)],
   controllers: [AppController],
   providers: [AppService],
 })

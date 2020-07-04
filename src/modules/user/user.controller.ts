@@ -12,10 +12,8 @@ export class UserController {
   }
 
   @Post()
-  async addUser(@Body() payload: User): Promise<any[]> {
+  async addUser(@Body() payload: User): Promise<User> {
     const users = await this.userService.addUser(payload);
-    // await this.userService.addUser(payload);
-    console.log(users);
-    return;
+    return users;
   }
 }
