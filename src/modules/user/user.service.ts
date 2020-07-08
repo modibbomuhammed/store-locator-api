@@ -8,7 +8,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserRepository } from './user.repository';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
-import { hash } from 'bcrypt';
+import { hash, compare } from 'bcrypt';
 // import { Hash } from 'crypto';
 
 // export class User {
@@ -46,6 +46,26 @@ export class UserService {
         );
       }
     }
+  }
+
+  async updateUser(user: User): Promise<User[]> {
+    const { username, password, message } = user;
+    const [found] = await this.findOne(username);
+    const isMatching = await compare(password, found.password);
+    if (isMatching) {
+      found.message = message;
+      await this.usersRepo.save(found);
+    }
+    return found;
+  }
+
+  async remove(id: string): Promise<any> {
+    const found = await this.usersRepo.find({
+      where: {
+        id,
+      },
+    });
+    await this.usersRepo.remove(found);
   }
 
   async findOne(username: string): Promise<any> {

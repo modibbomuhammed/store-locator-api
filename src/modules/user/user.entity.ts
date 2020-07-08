@@ -18,4 +18,8 @@ export class User {
   @MinLength(3)
   @Column()
   password: string;
+
+  @IsString()
+  @Column()
+  message: string;
 }
