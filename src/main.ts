@@ -9,6 +9,3 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
-
-// his lines 31 on his userService what would lead to that error
-// instead of creating a user dto i used user entity for validation

@@ -9,6 +9,7 @@ import { UserRepository } from './user.repository';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import { hash, compare } from 'bcrypt';
+
 // import { Hash } from 'crypto';
 
 // export class User {
@@ -31,7 +32,7 @@ export class UserService {
     return users;
   }
 
-  async addUser(user: User): Promise<User> {
+  async addUser(user: any): Promise<User> {
     try {
       const { password } = user;
       const hashed = await hash(password, 10);

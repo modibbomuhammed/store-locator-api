@@ -7,26 +7,30 @@ import {
   Patch,
   Delete,
   Param,
+  Logger,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { GetUser } from '../auth/get-user.decorator';
 
+@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController {
+  logger = new Logger('UserController');
   constructor(private userService: UserService) {}
 
   // @UseGuards(JwtAuthGuard)
   @Get()
-  async getUsers() {
+  async getUsers(@GetUser() user: User) {
     return await this.userService.getUsers();
   }
 
-  @Post()
-  async addUser(@Body() payload: User): Promise<User> {
-    const users = await this.userService.addUser(payload);
-    return users;
-  }
+  // @Post()
+  // async addUser(@Body() payload: User): Promise<User> {
+  //   const users = await this.userService.addUser(payload);
+  //   return users;
+  // }
 
   @Patch()
   async updateUser(@Body() payload: User): Promise<User[]> {
@@ -36,7 +40,6 @@ export class UserController {
 
   @Delete(':id')
   async deleteUser(@Param('id') id: string) {
-    console.log(id);
     await this.userService.remove(id);
   }
 }
