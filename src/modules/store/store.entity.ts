@@ -15,7 +15,7 @@ export class Store {
 
   @ManyToMany(type => Location)
   @JoinTable()
-  location: Location;
+  location: Location[];
 
   @Column()
   opening_time: string;
