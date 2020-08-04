@@ -76,33 +76,10 @@ export class StoreService {
       const storeLocation = new Store();
       storeLocation.opening_time = storeLoc.opening_time;
       storeLocation.phone_number = storeLoc.phone_number;
-      storeLocation.location = [location];
+      storeLocation.location = newLocation;
       const store = await this.storeRepo.save(storeLocation);
       finalDetails.push(store);
     }
-
-    // const that = this;
-    // async function loadDetails() {
-    //   storeDetails.forEach(async store => {
-    //     const location = new Location();
-    //     location.address_one = store.address_one;
-    //     location.address_two = store.address_two;
-    //     location.address_three = store.address_three;
-    //     location.post_code = store.post_code;
-    //     location.long = store.long;
-    //     location.lat = store.lat;
-
-    //     const newLocation = await that.locationService.saveLocation(location);
-    //     // await this.locationRepo.save(location);
-
-    //     const storeLocation = new Store();
-    //     storeLocation.opening_time = store.opening_time;
-    //     storeLocation.phone_number = store.phone_number;
-    //     storeLocation.location = [location];
-    //     await that.storeRepo.save(storeLocation);
-    //     console.log(storeLocation, 'final');
-    //   });
-    console.log(finalDetails, 'please work');
     return finalDetails;
   }
 }

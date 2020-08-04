@@ -3,8 +3,8 @@ import {
   Column,
   PrimaryGeneratedColumn,
   Unique,
-  ManyToMany,
   JoinTable,
+  ManyToOne,
 } from 'typeorm';
 import { Location } from '../location/location.entity';
 
@@ -13,9 +13,9 @@ export class Store {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToMany(type => Location)
+  @ManyToOne(type => Location, { eager: true })
   @JoinTable()
-  location: Location[];
+  location: Location;
 
   @Column()
   opening_time: string;

@@ -49,6 +49,9 @@ export class StoreController {
     }),
   )
   async createStore(@UploadedFile() file) {
+    if (!file || file.size === 0) {
+      throw new BadRequestException('Missing Required Parameter');
+    }
     return await this.storeService.createStores(file.originalname);
   }
 }
