@@ -7,6 +7,7 @@ import { ormConfig } from '../../../ormconfig';
 import { AuthModule } from '../auth/auth.module';
 import { StoreModule } from '../store/store.module';
 import { LocationModule } from '../location/location.module';
+import { PostCodeModule } from '../post-code/post-code.module';
 // import { User } from '../user/user.entity';
 
 // @Module({
@@ -35,6 +36,7 @@ import { LocationModule } from '../location/location.module';
     StoreModule,
     LocationModule,
     TypeOrmModule.forRoot(ormConfig),
+    PostCodeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

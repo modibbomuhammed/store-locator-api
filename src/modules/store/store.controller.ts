@@ -6,6 +6,7 @@ import {
   UseInterceptors,
   BadRequestException,
   UploadedFile,
+  Query,
 } from '@nestjs/common';
 import { StoreService } from './store.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -23,6 +24,11 @@ export class StoreController {
   @Get()
   async getStores(): Promise<Store[]> {
     return await this.storeService.getAllStores();
+  }
+
+  @Get('/closest')
+  async getClosest(@Query('post_code') postCode): Promise<Store[]> {
+    return await this.storeService.getClosestStore(postCode);
   }
 
   @Post()
