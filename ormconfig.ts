@@ -6,8 +6,14 @@ export const ormConfig: TypeOrmModuleOptions = {
   port: 5432,
   username: 'postgres',
   password: 'password',
-  database: 'testing',
-  entities: ['dist/**/*.entity{.ts,.js}'],
-  // entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  synchronize: true,
+  database: 'store-locator-db',
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
+  //entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  synchronize: false,
+  cli: {
+    // Location of migration should be inside src folder
+    // to be compiled into dist/ folder.
+    migrationsDir: 'src/migrations',
+  },
 };
