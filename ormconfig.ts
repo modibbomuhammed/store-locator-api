@@ -6,8 +6,8 @@ export const ormConfig: TypeOrmModuleOptions = {
   port: 5432,
   username: 'postgres',
   password: 'password',
-  database: 'testing',
+  database: 'storelocatorapi',
   entities: ['dist/**/*.entity{.ts,.js}'],
   // entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  synchronize: true,
+  synchronize: false,
 };
