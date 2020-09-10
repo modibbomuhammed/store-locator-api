@@ -1,4 +1,5 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
+import { hash, compare } from 'bcrypt';
 
 const defaultRoles = ['admin'];
 
@@ -32,9 +33,10 @@ export class createTables1598360324464 implements MigrationInterface {
   }
 
   async createAdmin(queryRunner: QueryRunner) {
+    const password = await hash('password', 10);
     await queryRunner.query(
       `INSERT INTO "user" ( "username", "password", message) VALUES (
-                       'admin', 'admin', 'message')`,
+                       'admin', '${password}', 'message')`,
       undefined,
     );
   }
