@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from '../user';
 import * as ormConfig from '../../ormconfig';
+// import { ormConfig } from '../../ormconfig';
 import { AuthModule } from '../auth/auth.module';
 import { StoreModule } from '../store/store.module';
 import { LocationModule } from '../location/location.module';

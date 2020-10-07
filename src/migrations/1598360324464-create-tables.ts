@@ -35,8 +35,8 @@ export class createTables1598360324464 implements MigrationInterface {
   async createAdmin(queryRunner: QueryRunner) {
     const password = await hash('password', 10);
     await queryRunner.query(
-      `INSERT INTO "user" ( "username", "password", message) VALUES (
-                       'admin', '${password}', 'message')`,
+      `INSERT INTO "user" ( "username", "password", message, 'lastName') VALUES (
+                       'admin', '${password}', 'message', 'admin')`,
       undefined,
     );
   }

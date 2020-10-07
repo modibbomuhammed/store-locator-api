@@ -11,11 +11,5 @@ export class User {
   username: string;
 
   @Column()
-  lastName: string;
-
-  @Column()
   password: string;
-
-  @Column()
-  message: string;
 }

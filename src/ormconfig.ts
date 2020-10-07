@@ -9,6 +9,7 @@ const ormConfig: ConnectionOptions = {
   database: process.env.DATABASE || 'store-locator-db',
   synchronize: true,
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  // entities: ['dist/**/**.entity{.ts,.js}'],
   migrationsRun: false,
   logging: true,
   logger: 'file',

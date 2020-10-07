@@ -13,7 +13,4 @@ export class AuthCredentialsDto {
     message: 'Password too weak',
   })
   password: string;
-
-  @IsString()
-  message: string;
 }
