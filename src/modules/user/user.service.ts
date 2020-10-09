@@ -50,11 +50,10 @@ export class UserService {
   }
 
   async updateUser(user: User): Promise<User[]> {
-    const { username, password, message } = user;
+    const { username, password } = user;
     const [found] = await this.findOne(username);
     const isMatching = await compare(password, found.password);
     if (isMatching) {
-      found.message = message;
       await this.usersRepo.save(found);
     }
     return found;
