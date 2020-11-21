@@ -4,11 +4,11 @@ import { sendStores } from '../action/actionCreators';
 import axios from 'axios';
 
 const SearchComponent = ({ sendStores }) => {
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/api/store/closest?post_code=de232qh')
-      .then(res => console.log(res.data));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:3000/api/store/closest?post_code=de232qh')
+  //     .then(res => console.log(res.data));
+  // }, []);
   const [postCode, setPostCode] = useState('');
   const findStores = async () => {
     const result = await axios.get(
