@@ -11,10 +11,9 @@ const SearchComponent = ({ sendStores }) => {
   // }, []);
   const [postCode, setPostCode] = useState('');
   const findStores = async () => {
-    const result = await axios.get(
-      `http://localhost:3000/api/store/closest?post_code=${postCode}`,
-    );
+    const result = await axios.get(`/api/store/closest?post_code=${postCode}`);
     sendStores(result.data);
+    setPostCode('');
   };
   return (
     <div className="search-wrapper ui action input" style={{ width: '50%' }}>
