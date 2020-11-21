@@ -9,6 +9,8 @@ import { AuthModule } from '../auth/auth.module';
 import { StoreModule } from '../store/store.module';
 import { LocationModule } from '../location/location.module';
 import { PostCodeModule } from '../post-code/post-code.module';
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 // import { User } from '../user/user.entity';
 
 // @Module({
@@ -38,6 +40,10 @@ import { PostCodeModule } from '../post-code/post-code.module';
     LocationModule,
     TypeOrmModule.forRoot(ormConfig),
     PostCodeModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../../..', 'client/build'),
+      exclude: ['/api*'],
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

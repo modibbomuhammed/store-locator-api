@@ -40,6 +40,7 @@ export class StoreService {
     });
 
     newDistances.sort((a, b) => a.distance - b.distance);
+
     return newDistances;
     function calcDist(lat1, lon1, lat2, lon2) {
       let R = 3959;
@@ -85,8 +86,8 @@ export class StoreService {
           opening_time,
           ,
           phone_number,
-          long,
           lat,
+          long,
         ] = line.split('|');
         storeDetails.push({
           name,
