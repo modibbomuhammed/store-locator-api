@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "set NODE_ENV=production&& npm run typeorm:migrate && node dist/main.js",
+    "start": "npm run typeorm:migrate && node dist/main.js",
     "start:dev": "set USERNAME=postgres&& npm run typeorm:migrate && nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "NODE_ENV=production node dist/main.js",
