@@ -15,6 +15,7 @@ const SearchComponent = ({ sendStores }) => {
       process.env.node_env === 'production'
         ? `/api/store/closest?post_code=${postCode}`
         : `http://localhost:3000/api/store/closest?post_code=${postCode}`;
+    console.log(string, 'ashman', process.env.node_env);
     const result = await axios.get(string);
     sendStores(result.data);
     setPostCode('');
