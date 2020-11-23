@@ -11,12 +11,11 @@ const SearchComponent = ({ sendStores }) => {
   // }, []);
   const [postCode, setPostCode] = useState('');
   const findStores = async () => {
-    // const string =
-    //   process.env.NODE_ENV === 'development'
-    //     ? `http://localhost:3000/api/store/closest?post_code=${postCode}`
-    //     : `/api/store/closest?post_code=${postCode}`;
-    const string = `/api/store/closest?post_code=${postCode}`;
-    console.log(string, 'ashman', process.env.NODE_ENV);
+    const string =
+      process.env.NODE_ENV === 'development'
+        ? `http://localhost:3000/api/store/closest?post_code=${postCode}`
+        : `https://fast-reaches-17883.herokuapp.com/api/store/closest?post_code=${postCode}`;
+
     const result = await axios.get(string);
     sendStores(result.data);
     setPostCode('');
