@@ -12,7 +12,7 @@ const SearchComponent = ({ sendStores }) => {
   const [postCode, setPostCode] = useState('');
   const findStores = async () => {
     const string =
-      process.env.node_env === 'production'
+      process.env.NODE_ENV === 'production'
         ? `/api/store/closest?post_code=${postCode}`
         : `http://localhost:3000/api/store/closest?post_code=${postCode}`;
     console.log(string, 'ashman', process.env.node_env);
