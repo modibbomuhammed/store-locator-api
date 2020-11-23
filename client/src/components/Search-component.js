@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { sendStores } from '../action/actionCreators';
 import axios from 'axios';
@@ -11,18 +11,23 @@ const SearchComponent = ({ sendStores }) => {
   // }, []);
   const [postCode, setPostCode] = useState('');
   const findStores = async () => {
-    const result = await axios.get(`/api/store/closest?post_code=${postCode}`);
+    const string =
+      process.env.node_env === 'production'
+        ? `/api/store/closest?post_code=${postCode}`
+        : `http://localhost:3000/api/store/closest?post_code=${postCode}`;
+    const result = await axios.get(string);
     sendStores(result.data);
     setPostCode('');
   };
   return (
-    <div className="search-wrapper ui action input" style={{ width: '50%' }}>
+    <div className="search-wrapper ui action input">
       <input
         id="search"
         type="text"
         value={postCode}
         placeholder="Enter your postcode"
         autoFocus
+        style={{ padding: '12px' }}
         onChange={e => setPostCode(e.target.value)}
       />
       <button
