@@ -16,8 +16,6 @@ const SearchComponent = ({ sendStores }) => {
         ? `http://localhost:3000/api/store/closest?post_code=${postCode}`
         : `/api/store/closest?post_code=${postCode}`;
 
-    // const string = `https://fast-reaches-17883.herokuapp.com/api/store/closest?post_code=${postCode}`;
-
     const result = await axios.get(string);
     sendStores(result.data);
     setPostCode('');
